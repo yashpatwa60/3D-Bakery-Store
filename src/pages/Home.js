@@ -15,7 +15,8 @@ const Home = () => {
         </div>
         <div>
           <p className="text-6xl">
-            Welcome To <span className="text-[#be6b2c]">3D Bakery Store</span>
+            Welcome {`${process.env.REACT_APP_NAME}`} To{" "}
+            <span className="text-[#be6b2c]">3D Bakery Store</span>
           </p>
         </div>
       </div>
