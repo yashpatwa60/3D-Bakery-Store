@@ -1,7 +1,7 @@
 import React, { useRef } from 'react'
 import { useGLTF } from '@react-three/drei'
 
-export default function Model({ cherry, ...props }) {
+export default function Model({ show_cherry, ...props }) {
   const group = useRef()
   const { nodes, materials } = useGLTF('/cupcake.gltf')
   return (
@@ -13,7 +13,7 @@ export default function Model({ cherry, ...props }) {
         rotation={[-2.85, 0.99, 2.57]}
         scale={0}
       />
-      {cherry && (
+      {show_cherry && (
         <mesh
           geometry={nodes.cherry.geometry}
           material={materials.cherry}
@@ -37,13 +37,13 @@ export default function Model({ cherry, ...props }) {
         rotation={[-Math.PI, Math.PI / 6, -Math.PI]}
         scale={0.11}
       />
-      <mesh
+      {/* <mesh
         geometry={nodes.cream.geometry}
         material={materials.cream}
         position={[0.11, 0.09, 0.13]}
         rotation={[-Math.PI, Math.PI / 6, -Math.PI]}
         scale={0.19}
-      />
+      /> */}
       <mesh
         geometry={nodes.Cylinder011.geometry}
         material={materials.sugar1}

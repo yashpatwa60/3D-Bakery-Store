@@ -7,10 +7,8 @@ import DonutsModel from "../models/Donuts";
 const Donuts = () => {
     return (
       <Canvas>
-        <Suspense fallback={null}></Suspense>
         {/* <ambientLight /> */}
         <directionalLight />
-
         <spotLight
           intensity={0.9}
           angle={0.1}
@@ -18,7 +16,11 @@ const Donuts = () => {
           position={[10, 15, 10]}
           castShadow
         />
-        <DonutsModel />
+        
+        <Suspense fallback={null}>
+          <DonutsModel />
+        </Suspense>
+
         <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
       </Canvas>
     );
