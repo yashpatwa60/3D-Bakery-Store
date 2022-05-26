@@ -7,7 +7,7 @@ const Item = ({ product, handleremoveCartProduct }) => {
       <div className="col-span-8">
         <div className="flex border-2 border-gray-300 px-6 py-4 rounded-xl shadow-md">
           <div>
-            <product.model />
+            <product.model product={product}/>
           </div>
           <div>
             <p>{name}</p>

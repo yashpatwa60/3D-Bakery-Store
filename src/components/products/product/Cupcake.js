@@ -3,7 +3,7 @@ import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
 import CupcakeModel from "../models/Cupcake";
 
-const Cupcake = ({ show_cherry}) => {
+const Cupcake = ({ product }) => {
   return (
     <Canvas>
       <ambientLight intensity={0.8} />
@@ -16,7 +16,7 @@ const Cupcake = ({ show_cherry}) => {
       />
 
       <Suspense fallback={null}>
-        <CupcakeModel show_cherry={show_cherry} />
+        <CupcakeModel product={product}/>
       </Suspense>
 
       <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />

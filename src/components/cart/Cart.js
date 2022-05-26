@@ -5,15 +5,12 @@ import { removeCartProduct } from "../../redux/actions/cart.js";
 import Item from "./Item";
 
 export const Cart = () => {
-  const [update, setUpdate] = useState(false);
-
   const dispatch = useDispatch();
 
   const cartProducts = useSelector((state) => state.cart.cart_products);
 
   const handleremoveCartProduct = (id) => {
     dispatch(removeCartProduct(id));
-    setUpdate((prev) => !prev);
   };
 
   return (
@@ -22,9 +19,9 @@ export const Cart = () => {
         <h1>No products in cart !!!</h1>
       ) : (
         <>
-          {cartProducts.map((product) => (
+          {cartProducts.map((product, product_index) => (
             <Item
-              key={`CART_PRODUCT_${product.id}`}
+              key={`CART_PRODUCT_${product_index}`}
               handleremoveCartProduct={handleremoveCartProduct}
               product={product}
             />

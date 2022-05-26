@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { setCartProduct } from "../../redux/actions/cart";
+import { setProductMaterial } from "../../redux/actions/product";
 
 const ProductDetail = () => {
   const { productId } = useParams();
@@ -23,19 +24,19 @@ const ProductDetail = () => {
     const selectedProduct = {
       ...product,
       quantity,
-      materials: ["cherry", "cheese"],
     };
     dispatch(setCartProduct(selectedProduct));
   };
 
   const handleMaterials = (productId, material) => {
-
+    dispatch(setProductMaterial(productId, material));
+    setCherry(prev => !prev)
   };
   return (
     <div className="m-11 p-12">
       <div className="grid grid-cols-2 gap-5">
         <div>
-          <product.model show_cherry={cherry} />
+          <product.model product={product}/>
         </div>
         <div>
           <p className="text-3xl text-red-400">{product.name}</p>
@@ -79,8 +80,9 @@ const ProductDetail = () => {
             <button className="bg-red-300 text-white font-bold px-3 py-2 ">
               Buy now
             </button>
-            {product.materials.map((material, material_id) => (
+            {Object.keys(product.materials).map((material, material_id) => (
               <button
+                key={`${material}${material_id}`}
                 onClick={() => handleMaterials(product.id, material)}
                 className="bg-red-300 text-white font-bold px-3 py-2 "
               >

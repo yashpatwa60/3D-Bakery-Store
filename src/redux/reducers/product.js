@@ -1,6 +1,6 @@
-import { SET_PROTUCTS } from "../actionTypes"
-import Cake from "../../components/products/product/Cake"
-import Donut from "../../components/products/product/Donut"
+import { SET_PRODUCT_MATERIAL, SET_PROTUCTS } from "../actionTypes";
+import Cake from "../../components/products/product/Cake";
+import Donut from "../../components/products/product/Donut";
 import Cupcake from "../../components/products/product/Cupcake";
 import PinkDonut from "../../components/products/product/PinkDonut";
 import Donuts from "../../components/products/product/Donuts";
@@ -15,7 +15,11 @@ const initialState = {
       price: 567,
       model: Cake,
       quantity: 1,
-      materials: ["candals", "chocklates", "strawberry"],
+      materials: {
+        candals: false,
+        chocklates: false,
+        strawberry: false,
+      },
       type: "cake",
       rating: 5,
     },
@@ -25,7 +29,11 @@ const initialState = {
       price: 600,
       model: Donut,
       quantity: 1,
-      materials: ["chocklate", "bread", "sprinklers"],
+      materials: {
+        chocklate: false,
+        bread: false,
+        sprinklers: false,
+      },
       type: "donut",
       rating: 5,
     },
@@ -35,30 +43,35 @@ const initialState = {
       price: 300,
       model: Cupcake,
       quantity: 1,
-      materials: ["cherry", "bread", "sprinklers"],
+      materials: {
+        cherry: false,
+        bread: false,
+        sprinklers: false,
+        cream: false,
+      },
       type: "cake",
       rating: 5,
     },
-    {
-      id: 4,
-      name: "Pink Donut",
-      price: 1000,
-      model: PinkDonut,
-      quantity: 1,
-      materials: ["bread", "chesse", "sprinklers"],
-      type: "donut",
-      rating: 5,
-    },
-    {
-      id: 5,
-      name: "Donuts",
-      price: 200,
-      model: Donuts,
-      quantity: 1,
-      materials: ["chocklate", "bread", "sprinklers"],
-      type: "donut",
-      rating: 5,
-    },
+    // {
+    //   id: 4,
+    //   name: "Pink Donut",
+    //   price: 1000,
+    //   model: PinkDonut,
+    //   quantity: 1,
+    //   materials: ["bread", "chesse", "sprinklers"],
+    //   type: "donut",
+    //   rating: 5,
+    // },
+    // {
+    //   id: 5,
+    //   name: "Donuts",
+    //   price: 200,
+    //   model: Donuts,
+    //   quantity: 1,
+    //   materials: ["chocklate", "bread", "sprinklers"],
+    //   type: "donut",
+    //   rating: 5,
+    // },
     // {
     //   id: 6,
     //   name: "Chocklate Cake",
@@ -82,15 +95,30 @@ const initialState = {
   ],
 };
 
-export default function productReducer(state = initialState, { type, payload }){
-    switch (type ){
-        case SET_PROTUCTS:
-            return {
-                ...state
-            }
+export default function productReducer(
+  state = initialState,
+  { type, payload }
+) {
+  switch (type) {
+    case SET_PROTUCTS:
+      return {
+        ...state,
+      };
+    case SET_PRODUCT_MATERIAL:
+      const { id, material } = payload;
+      const updated_products = state.products.map((product) => {
+        if (product.id == id) {
+          product.materials[material] = !product.materials[material];
+        }
 
-        default: 
-            return state
+        return product;
+      });
+      return {
+        ...state,
+        products: updated_products,
+      };
 
-    }
+    default:
+      return state;
+  }
 }

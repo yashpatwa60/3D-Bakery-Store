@@ -1,19 +1,23 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 
 const Navbar = () => {
+  const total_products = useSelector((state) => state.cart.total_products);
+
+  const [ show, setShow ] = useState(false)
+
   return (
     <div className="container w-full flex justify-center ">
       <div className="w-1/2  rounded-md p-5 mt-1 border border-gray-300">
         <div className="bg-white border-gray-200 px-2 sm:px-4 py-2.5 rounded ">
           <div className="container flex flex-wrap justify-between items-center mx-auto">
-          
-              <Link className="flex items-center" to="/">
-                <span className="self-center text-xl font-semibold whitespace-nowrap ">
-                  Bakery Store
-                </span>
-              </Link>
-         
+            <Link className="flex items-center" to="/">
+              <span className="self-center text-xl font-semibold whitespace-nowrap ">
+                Bakery Store
+              </span>
+            </Link>
+
             <button
               data-collapse-toggle="mobile-menu"
               type="button"
@@ -52,12 +56,15 @@ const Navbar = () => {
                 <Link to="/cart">
                   <p className="block hover:bg-gray-900 hover:text-gray-100 transition-colors duration-200 transform py-2 px-3 text-dark rounded md:bg-transparent md:text-dark ">
                     Cart
+                    <span className="px-2 py-2 bg-black text-white">
+                      {total_products}
+                    </span>
                   </p>
                 </Link>
 
                 <div className="relative inline-block ">
                   {/* <!-- Dropdown toggle button --> */}
-                  <button className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none">
+                  <button onClick={() => setShow(prev => !prev)} className="relative z-10 flex items-center p-2 text-sm text-gray-600 bg-white border border-transparent rounded-md focus:border-blue-500 focus:ring-opacity-40 dark:focus:ring-opacity-40 focus:ring-blue-300 dark:focus:ring-blue-400 focus:ring dark:text-white dark:bg-gray-800 focus:outline-none">
                     <span className="mx-1">Jane Doe</span>
                     <svg
                       className="w-5 h-5 mx-1"
@@ -73,7 +80,8 @@ const Navbar = () => {
                   </button>
 
                   {/* <!-- Dropdown menu --> */}
-                  <div className="hidden absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800">
+                  <div className={`${show ? 'hidden' : ''} absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800`}
+                  >
                     <a
                       href="/about"
                       className="flex items-center p-3 -mt-2 text-sm text-gray-600 transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
@@ -98,35 +106,7 @@ const Navbar = () => {
                       view profile
                     </a>
 
-                    <a
-                      href="/settings"
-                      className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                      Settings
-                    </a>
-
-                    <a
-                      href="/shortcuts"
-                      className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                      Keyboard shortcuts
-                    </a>
-
                     <hr className="border-gray-200 dark:border-gray-700 " />
-
-                    <a
-                      href="/profile"
-                      className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                      Company profile
-                    </a>
-
-                    <a
-                      href="/team"
-                      className="block px-4 py-3 text-sm text-gray-600 capitalize transition-colors duration-200 transform dark:text-gray-300 hover:bg-gray-100 dark:hover:bg-gray-700 dark:hover:text-white"
-                    >
-                      Team
-                    </a>
 
                     <a
                       href="/invite"
