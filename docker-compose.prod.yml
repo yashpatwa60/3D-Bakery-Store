@@ -2,14 +2,11 @@ version: "3.8"
 
 services: 
   app:
-    container_name: app_dev
-    image: app_dev
+    container_name: app_prod
+    image: app_prod
     build: 
       context: .
       dockerfile: Dockerfile.prod 
-      target: production
-    ports:
-      - 8080:80
     environment: 
       - REACT_APP_NAME=YASH-PROD
 
