@@ -3,55 +3,48 @@ import React from "react";
 const Item = ({ product, handleremoveCartProduct }) => {
   const { name, id, price, quantity } = product;
   return (
-    <div className="grid grid-cols-12 gap-5">
-      <div className="col-span-8">
-        <div className="flex border-2 border-gray-300 px-6 py-4 rounded-xl shadow-md">
-          <div>
-            <product.model product={product}/>
-          </div>
-          <div>
-            <p>{name}</p>
-            <p>Id: {id}</p>
-            <p>{price}</p>
-            <button
-              onClick={() => handleremoveCartProduct(id)}
-              className="px-3 py-2 bg-black text-white font-bold text-xl"
-            >
-              X
-            </button>
-          </div>
-          <div>
-            <div className="flex">
-              <button className="border-2 px-3 py-2 border-gray-300">-</button>
-              <button className="border-2 px-3 py-2 border-gray-300 disabled">
-                {quantity}
-              </button>
-              <button className="border-2 px-3 py-2 border-gray-300">+</button>
-            </div>
-          </div>
+      <div className="flex border-2 border-gray-300 px-6 py-4 rounded-xl shadow-md">
+        <div>
+          <product.model product={product} />
         </div>
-      </div>
-      <div className="col-span-4">
-        <div className="p-5 border-2 border-gray-300 bg-yellow-200">
-          <p className="text-2xl font-semibold uppercase">Order Summary</p>
+        <div>
+          <p className="text-3xl text-red-400">{product.name}</p>
+          <div className="flex gap-2 my-1">
+            <p className="text-lg font-semibold">₹ {product.price}</p>
+
+            <p className="inline-block bg-yellow-200 rounded px-4">
+              <span>★</span>
+              {product.rating}/5
+            </p>
+          </div>
           <p>
-            Subtotal <span>60</span>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Praesentium
           </p>
-          <p>
-            Estimated Shipping <span>30</span>
-          </p>
-          <p>
-            Shipping Discount <span>-87</span>
-          </p>
-          <p className="text-xl font-semibold">
-            Total <span>92</span>
-          </p>
-          <button className="bg-black px-3 py-2 text-white font-bold uppercase">
-            Checkout Now
+          <button
+            onClick={() => handleremoveCartProduct(id)}
+            className="px-3 py-1 my-3 bg-black text-white font-bold text-lg"
+          >
+            X
           </button>
         </div>
+        <div>
+          <div className="flex">
+            <button
+              // onClick={handleQuantityDecrement}
+              className=" bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-16 rounded-l cursor-pointer outline-none"
+            >
+              <span class="m-auto text-2xl font-thin">−</span>
+            </button>
+            <button className="disabled w-14 bg-gray-200">{quantity}</button>
+            <button
+              // onClick={handleQuantityIncrement}
+              className="bg-gray-300 text-gray-600 hover:text-gray-700 hover:bg-gray-400 h-full w-16 rounded-r cursor-pointer"
+            >
+              <span class="m-auto text-2xl font-thin">+</span>
+            </button>
+          </div>
+        </div>
       </div>
-    </div>
   );
 };
 

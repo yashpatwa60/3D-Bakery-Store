@@ -45,16 +45,42 @@ const Products = () => {
             </option>
           ))}
         </select>
+        <div>
+          <div>
+            <button className="border rounded-sm border-gray-300 px-3 hover:bg-yellow-300 py-2 font-semibold text-md">
+              Cakes
+            </button>
+          </div>
+        </div>
       </div>
       <div className="grid grid-cols-3 gap-4">
         {mainProducts.map((product) => (
-          <div key={`PRODUCT_${product.name}`} className="h-72 w-92 border-2 border-gray-300 p-4 m-8 hover:-translate-y-3 duration-400">
-            <product.model product={product}/>
-            <Link to={`product/${product.id}`}>
-              <button className="bg-black text-white rounded px-3 py-2 font-bold">
-                View
-              </button>
-            </Link>
+          <div className="h-92">
+            <div
+              key={`PRODUCT_${product.name}`}
+              className="h-72 w-92 border border-gray-300 p-4 m-8 hover:-translate-y-3 duration-400"
+            >
+              <product.model product={product} />
+              <Link to={`product/${product.id}`}>
+                <button className="bg-black text-white rounded px-3 py-2 font-bold">
+                  View
+                </button>
+              </Link>
+              <div className="flex justify-between">
+                <div className="flex align-center justify-center gap-2">
+                  <p className="text-xl">{product.name}</p>
+                  <p className="bg-yellow-200 rounded px-4">
+                    <span>★</span>
+                    {product.rating}/5
+                  </p>
+                </div>
+                <p>₹ {product.price}</p>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum,
+                et.
+              </p>
+            </div>
           </div>
         ))}
       </div>

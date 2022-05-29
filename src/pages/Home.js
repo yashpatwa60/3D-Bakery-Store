@@ -1,6 +1,7 @@
 import React from "react";
 import homeDonutImg from "../assets/img/home_donut.png";
 import Products from "../components/products/Products";
+import Banner from "./Banner";
 
 const Home = () => {
   return (
@@ -14,12 +15,13 @@ const Home = () => {
           />
         </div>
         <div>
-          <p className="text-6xl">
+          <p className="text-6xl underline decoration-amber-700">
             Welcome To <span className="text-[#be6b2c]">3D Bakery Store</span>
           </p>
         </div>
       </div>
       <div>
+        <Banner />
         <Products />
       </div>
     </>
