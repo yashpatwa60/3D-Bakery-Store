@@ -1,13 +1,10 @@
 import React, { Suspense } from "react";
-import BadayCakeModel from "../models/Baday_cake";
+import IceCreamChocklateModel from "../models/IceCreamChocklate";
 import { Canvas } from "@react-three/fiber";
 import { OrbitControls } from "@react-three/drei";
-import * as dat from "dat.gui";
 
-const Cake = () => {
-  const gui = new dat.GUI();
+const IceCreamChocklate = ({ product }) => {
   return (
-    
     <Canvas>
       <ambientLight intensity={1} />
       <directionalLight />
@@ -20,7 +17,7 @@ const Cake = () => {
       />
 
       <Suspense fallback={null}>
-        <BadayCakeModel />
+        <IceCreamChocklateModel product={product}/>
       </Suspense>
 
       <OrbitControls enablePan={true} enableZoom={true} enableRotate={true} />
@@ -28,4 +25,4 @@ const Cake = () => {
   );
 };
 
-export default Cake;
+export default IceCreamChocklate;

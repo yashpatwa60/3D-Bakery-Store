@@ -80,7 +80,7 @@ const Navbar = () => {
                   </button>
 
                   {/* <!-- Dropdown menu --> */}
-                  <div className={`${show ? 'hidden' : ''} absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800`}
+                  <div className={`${show ? '' : 'hidden'} absolute right-0 z-20 w-56 py-2 mt-2 overflow-hidden bg-white rounded-md shadow-xl dark:bg-gray-800`}
                   >
                     <a
                       href="/about"

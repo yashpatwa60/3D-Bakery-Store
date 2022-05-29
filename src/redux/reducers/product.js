@@ -4,6 +4,7 @@ import Donut from "../../components/products/product/Donut";
 import Cupcake from "../../components/products/product/Cupcake";
 import PinkDonut from "../../components/products/product/PinkDonut";
 import Donuts from "../../components/products/product/Donuts";
+import IceCreamChocklate from "../../components/products/product/IceCreamChocklate";
 // import ChocklateCake from "../../components/products/product/ChocklateCake";
 // import StrawberryCake from "../../components/products/product/StrawberryCake";
 
@@ -52,6 +53,19 @@ const initialState = {
       type: "cake",
       rating: 5,
     },
+    {
+      id: 4,
+      name: "Ice Cream Chocklate",
+      price: 800,
+      model: IceCreamChocklate,
+      quantity: 1,
+      materials: {
+        cherry: false,
+        cream: false,
+      },
+      type: "cake",
+      rating: 3
+    }
     // {
     //   id: 4,
     //   name: "Pink Donut",
