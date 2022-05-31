@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
-import cakeImg from "../../assets/img/cake.jpg";
+// import cakeImg from "../../assets/img/cake.jpg";
 import cartImg from "../../assets/img/cart.svg";
 
 const Navbar = () => {

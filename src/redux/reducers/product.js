@@ -2,9 +2,9 @@ import { SET_PRODUCT_MATERIAL, SET_PROTUCTS } from "../actionTypes";
 import Cake from "../../components/products/product/Cake";
 import Donut from "../../components/products/product/Donut";
 import Cupcake from "../../components/products/product/Cupcake";
-import PinkDonut from "../../components/products/product/PinkDonut";
-import Donuts from "../../components/products/product/Donuts";
 import IceCreamChocklate from "../../components/products/product/IceCreamChocklate";
+// import PinkDonut from "../../components/products/product/PinkDonut";
+// import Donuts from "../../components/products/product/Donuts";
 // import ChocklateCake from "../../components/products/product/ChocklateCake";
 // import StrawberryCake from "../../components/products/product/StrawberryCake";
 
@@ -63,7 +63,7 @@ const initialState = {
         cherry: false,
         cream: false,
       },
-      type: "cake",
+      type: "icecream",
       rating: 3
     }
     // {
@@ -121,7 +121,7 @@ export default function productReducer(
     case SET_PRODUCT_MATERIAL:
       const { id, material } = payload;
       const updated_products = state.products.map((product) => {
-        if (product.id == id) {
+        if (product.id === id) {
           product.materials[material] = !product.materials[material];
         }
 

@@ -10,6 +10,7 @@ export const Cart = () => {
   const dispatch = useDispatch();
 
   const cartProducts = useSelector((state) => state.cart.cart_products);
+  const subtotal = useSelector(state => state.cart.subtotal)
 
   const handleremoveCartProduct = (id) => {
     dispatch(removeCartProduct(id));
@@ -63,7 +64,7 @@ export const Cart = () => {
                   Order Details
                 </p>
                 <p className="flex my-2 justify-between">
-                  Subtotal <span className="font-semibold">₹ 60</span>
+                  Subtotal <span className="font-semibold">₹ {subtotal}</span>
                 </p>
                 <p className="flex my-2 justify-between">
                   Estimated Shipping <span className="font-semibold">₹ 30</span>
